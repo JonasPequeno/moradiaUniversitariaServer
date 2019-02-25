@@ -1,0 +1,17 @@
+{
+  "name": "moradiauniversitariaservidor",
+  "version": "1.0.0",
+  "description": "Api que sera usada no aplicativo Moradia Universitaria, que sera desenvolvido em java.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonas Pequeno",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "md5": "^2.2.1",
+    "mongoose": "^5.4.15"
+  }
+}
