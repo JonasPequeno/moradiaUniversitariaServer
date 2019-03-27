@@ -5,15 +5,17 @@ exports.post = async (repository, validationContract, req, res) => {
     try {
         let data = req.body;
 
-        if (!validationContract.isValid()) {
+/*        if (!validationContract.isValid()) {
             res.status(400).send({
                 mensage: "Existem dados inválidos na sua requisição!",
                 validation: validationContract.errors()
             }).end();
             return;
-        }
+        }*/
 
         let resultado = await repository.create(data);
+
+        console.log("resultado", resultado);
 
         res.status(201).send(resultado);
 
@@ -27,15 +29,9 @@ exports.put = async (repository, validationContract, req, res) => {
         let data = req.body;
         let id = req.params.id;
 
-        if (!validationContract.isValid()) {
-            req.status(400).send({
-                mensage: "Existem dados inválidos na sua requisição!",
-                validation: validationContract.errors()
-            }).end();
-            return;
-        }
-
         let resultado = await repository.update(id, data);
+
+        console.log("Resultado update", data);
 
         res.status(202).send(resultado);
 

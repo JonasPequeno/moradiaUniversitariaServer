@@ -17,10 +17,15 @@ imovelController.prototype.post = async (req, res) => {
 
     let _validation = new validation();
     let data = req.body;
+
+    console.log(data);
     
     _validation.isRequired(req.body.sobreImovel, 'Informe a descrição do imóvel!');
     _validation.isRequired(req.body.sobreVaga, 'Informe a descrição da vaga!');
     _validation.isRequired(req.body.valorVaga, 'Informe o valor da vaga!');
+
+    console.log("Imovel recebido", req.body);
+    
 
     await base.post(_repo, _validation, req, res);
 

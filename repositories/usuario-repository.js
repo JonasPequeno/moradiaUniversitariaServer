@@ -11,20 +11,20 @@ class usuarioRepository {
 
     constructor() {
         this._base = new base(modelo);
-        this.projecao = 'nome email _id instituicao';
+        this.projecao = 'nome email _id instituicao endereco';
     }
 
     async create(usuario) {
         let usuarioCriado = await this._base.create(usuario);
-        return  await this._base._model.findById(usuarioCriado._id, this.projecao);
+        return await this._base._model.findById(usuarioCriado._id, this.projecao);
 
     }
 
-    async isEmailExiste(Email) { 
-       let result  = await this._base._model.find({email : Email},this.projecao);       
-       console.log("Resultado do email " +resul);
-       
-       return result;
+    async isEmailExiste(Email) {
+        let result = await this._base._model.find({ email: Email }, this.projecao);
+        console.log("Resultado do email " + resul);
+
+        return result;
     }
 
     async authenticate(Email, Senha) {
@@ -44,6 +44,12 @@ class usuarioRepository {
         let usuarioAtualizado = await this._base.update(id, {
             nome: usuario.nome,
             email: usuario.email,
+            endereco:{
+                cidade: usuario.endereco.cidade,
+                numero: usuario.endereco.numero,
+                estado: usuario.endereco.estado,
+                rua: usuario.endereco.rua,
+            },
             foto: usuario.foto,
             instituicao: usuario.instituicao,
         });

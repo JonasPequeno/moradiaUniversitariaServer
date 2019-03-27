@@ -14,7 +14,7 @@ const imovelModel = new schema({
         rua: { type: String }    
     },
     valorVaga: { type: Number, required: true },
-    ativo: { type: Boolean, required: true },
+    ativo: { type: Boolean},
     dataCriacao: { type: Date, default: Date.now }
 }, { versionKey: false });
 

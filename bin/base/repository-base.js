@@ -21,8 +21,9 @@ class baseRepository {
         return await this._model.findById(id);
     }
 
-    async update(id, base) {
-        await this._model.findByIdAndUpdate(id, { $set: base });
+    async update(id, base) {               
+
+        await this._model.findOneAndUpdate(id, { $set: base });
         return await this._model.findById(id);
     }
 
