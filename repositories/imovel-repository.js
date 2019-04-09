@@ -11,7 +11,7 @@ class imovelRepository {
 
     constructor() {
         this._base = new base(modelo);
-        this.projecao = 'sobreImovel sobreVaga foto valorVaga';
+        this.projecao = 'sobreImovel sobreVaga foto valorVaga _id';
     }
 
     async create(imovel) {
@@ -21,7 +21,7 @@ class imovelRepository {
     }
 
     async getAll() {
-        return await this._base._model.find({}, this.projecao);
+        return await this._base._model.find({});
     }
 
     async getById(id) {
@@ -29,11 +29,22 @@ class imovelRepository {
     }
 
     async update(id, imovel) {
+        console.log("<----Imovel recebido para editar---->");
+        console.log(imovel);
+        
         let imovelAtualizado = await this._base.update(id, {
             sobreImovel: imovel.sobreImovel,
             sobreVaga: imovel.sobreVaga,
+            contato: imovel.contato,
             foto: imovel.foto,
+            emailUser : imovel.emailUser,
             valorVaga: imovel.valorVaga,
+            endereco: {
+                cidade : imovel.endereco.cidade,
+                numero : imovel.endereco.numero,
+                rua : imovel.endereco.rua,
+                estado : imovel.endereco.estado
+            }
         });
         return this._base._model.findById(imovelAtualizado._id, this.projecao);
     }

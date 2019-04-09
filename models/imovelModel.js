@@ -7,6 +7,8 @@ const imovelModel = new schema({
     sobreImovel: { index: true, required: true, type: String },
     sobreVaga: { type: String, required: true },
     foto: { type: String },
+    contato :{type: String},
+    emailUser: { type: String },
     endereco: {
         cidade: { type: String },
         numero: {type: Number},

@@ -27,7 +27,7 @@ exports.post = async (repository, validationContract, req, res) => {
 exports.put = async (repository, validationContract, req, res) => {
     try {
         let data = req.body;
-        let id = req.params.id;
+        let id = req.body.id;
 
         let resultado = await repository.update(id, data);
 
